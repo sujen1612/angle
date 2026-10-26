@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATHS EXHIBITION 2026 | வட்டக் கோணக் கணிப்பான்</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Noto Sans Tamil -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
+            background-color: #070913;
+            color: #f8fafc;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Animated Aurora Background Blobs */
+        @keyframes floatBlob1 {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(40px, -60px) scale(1.15); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+        @keyframes floatBlob2 {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(-50px, 40px) scale(1.1); }
+            66% { transform: translate(30px, -40px) scale(0.95); }
+        }
+        @keyframes floatBlob3 {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(25px, 50px) scale(1.12); }
+        }
+
+        .aurora-1 { animation: floatBlob1 14s infinite ease-in-out; }
+        .aurora-2 { animation: floatBlob2 18s infinite ease-in-out; }
+        .aurora-3 { animation: floatBlob3 16s infinite ease-in-out; }
+
+        /* Glassmorphism Cards */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.55);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.25s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+            background: rgba(30, 41, 59, 0.7);
+        }
+
+        /* Custom Range Slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: rgba(255, 255, 255, 0.12);
+            height: 8px;
+            border-radius: 999px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            background: linear-gradient(135deg, #22d3ee, #3b82f6);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(34, 211, 238, 0.8);
+            border: 2px solid #ffffff;
+            transition: transform 0.15s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #070913; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="min-h-screen relative flex flex-col justify-between p-3 sm:p-6 lg:p-8">
+
+    <!-- Background Animated Aurora & Particle Canvas -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="aurora-1 absolute -top-24 -left-24 w-96 h-96 bg-cyan-500/20 rounded-full filter blur-[110px]"></div>
+        <div class="aurora-2 absolute top-1/3 -right-24 w-[28rem] h-[28rem] bg-fuchsia-600/20 rounded-full filter blur-[130px]"></div>
+        <div class="aurora-3 absolute -bottom-32 left-1/3 w-[30rem] h-[30rem] bg-indigo-600/20 rounded-full filter blur-[120px]"></div>
+        <canvas id="bgParticles" class="absolute inset-0 w-full h-full opacity-50"></canvas>
+    </div>
+
+    <!-- Header Section -->
+    <header class="relative z-10 max-w-7xl w-full mx-auto mb-4 sm:mb-6">
+        
+        <!-- Top Exhibition Banner -->
+        <div class="mb-3 rounded-2xl bg-gradient-to-r from-indigo-950/90 via-slate-900/95 to-indigo-950/90 border border-amber-400/30 px-4 py-2.5 text-center shadow-lg shadow-amber-500/5 backdrop-blur-md">
+            <div class="inline-flex items-center justify-center gap-2 sm:gap-3">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                <h2 class="text-xs sm:text-base md:text-lg font-extrabold tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-400 to-cyan-300">
+                    MATHS EXHIBITION 2026 IN POOVARASANKULAM M.V
+                </h2>
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            </div>
+        </div>
+
+        <div class="glass-panel rounded-2xl px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/25">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9" stroke-width="2" stroke-dasharray="4 2"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 12L19 12M12 12L16.5 5.5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-indigo-200">
+                        வட்டக் கோணக் கணிப்பான் <span class="font-normal text-sm sm:text-base text-slate-400">| Protractor 360°</span>
+                    </h1>
+                    <p class="text-xs sm:text-sm text-slate-400">
+                        கோடுகளின் முனைகளை தொட்டு இழுத்து (Drag / Touch) பாகையை கணிக்கவும்
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Controls: Snap & Decimal Toggles -->
+            <div class="flex flex-wrap items-center gap-2.5">
+                <button id="snapToggleBtn" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium glass-card flex items-center gap-2 text-cyan-300 border-cyan-500/40 bg-cyan-500/10">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" id="snapDot"></span>
+                    <span>முழு எண் (1° Snap)</span>
+                </button>
+                <button id="resetBtn" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium glass-card text-slate-300 hover:text-white flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    <span>மீட்டமை (Reset)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Interactive Workspace -->
+    <main class="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-center my-auto">
+
+        <!-- Left Column: Interactive HTML5 Protractor Canvas (7 cols on desktop) -->
+        <div class="lg:col-span-7 flex flex-col items-center justify-center">
+            <div class="glass-panel rounded-3xl p-3 sm:p-6 w-full flex flex-col items-center justify-center relative overflow-hidden">
+
+                <!-- Legend Bar inside Canvas Container -->
+                <div class="w-full flex flex-wrap items-center justify-between gap-2 mb-2 px-2 text-xs text-slate-300">
+                    <div class="flex items-center gap-4">
+                        <span class="flex items-center gap-1.5">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block shadow-[0_0_8px_#f43f5e]"></span>
+                            கோடு A (Arm 1): <strong id="arm1Label" class="text-white font-mono">0°</strong>
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <span class="w-3 h-3 rounded-full bg-cyan-400 inline-block shadow-[0_0_8px_#22d3ee]"></span>
+                            கோடு B (Arm 2): <strong id="arm2Label" class="text-white font-mono">90°</strong>
+                        </span>
+                    </div>
+                    <span class="text-slate-400 hidden sm:inline">வட்டத்தின் புள்ளிகளை இழுக்கவும்</span>
+                </div>
+
+                <!-- Responsive Canvas Wrapper -->
+                <div id="canvasWrapper" class="relative w-full max-w-[500px] aspect-square flex items-center justify-center">
+                    <canvas id="protractorCanvas" class="w-full h-full touch-none cursor-grab active:cursor-grabbing"></canvas>
+                </div>
+
+                <!-- Bottom Angle Mode Toggle Switch -->
+                <div class="mt-3 flex flex-wrap items-center justify-center gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-slate-700/60">
+                    <button id="modeShortest" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md">
+                        உட்கோணம் (Shortest Angle)
+                    </button>
+                    <button id="modeCCW" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-400 hover:text-white">
+                        முழுச்சுற்று A→B (0°-360°)
+                    </button>
+                    <button id="modeReflex" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-400 hover:text-white">
+                        பின்வளை (Reflex Angle)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Display & Control Panel (5 cols on desktop) -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+
+            <!-- Primary Angle Display Card -->
+            <div class="glass-panel rounded-3xl p-5 sm:p-6 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-36 h-36 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs sm:text-sm uppercase tracking-wider font-semibold text-cyan-400">
+                        அடைக்கப்படும் கோணம் • Enclosed Angle
+                    </span>
+                    <span id="explementaryBadge" class="text-xs px-2.5 py-1 rounded-full bg-slate-800/90 text-slate-300 border border-slate-700 font-mono">
+                        வெளிக்கோணம்: 270°
+                    </span>
+                </div>
+
+                <!-- Big Degree Number -->
+                <div class="my-3 flex items-baseline gap-3">
+                    <div id="mainDegreeDisplay" class="text-6xl sm:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-200 to-blue-400 font-mono">
+                        90°
+                    </div>
+                    <div class="text-slate-400 text-sm sm:text-base font-medium">
+                        பாகை<br><span class="text-xs text-slate-500">Degrees</span>
+                    </div>
+                </div>
+
+                <!-- Dynamic Tamil & English Angle Classification Badge -->
+                <div id="angleTypeCard" class="mt-4 p-3.5 rounded-2xl bg-gradient-to-r from-emerald-500/20 to-teal-500/10 border border-emerald-500/30 flex items-center justify-between">
+                    <div>
+                        <div class="text-xs text-emerald-300 uppercase tracking-wide font-semibold">கோண வகை • Angle Type</div>
+                        <div id="angleTypeTamil" class="text-lg sm:text-xl font-bold text-white mt-0.5">செங்கோணம் (Right Angle)</div>
+                    </div>
+                    <div id="angleTypeIcon" class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-300 font-bold text-lg">
+                        ∟
+                    </div>
+                </div>
+
+                <!-- Secondary Metrics Grid (Radians, Grad, Circle Fraction) -->
+                <div class="grid grid-cols-3 gap-2.5 mt-4">
+                    <div class="glass-card rounded-2xl p-3 text-center">
+                        <div class="text-[11px] text-slate-400">ரேடியன் (Radians)</div>
+                        <div id="radianDisplay" class="text-sm sm:text-base font-bold text-cyan-300 font-mono mt-1">1.571 rad</div>
+                        <div id="piDisplay" class="text-[11px] text-slate-400 font-mono">0.50π</div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-3 text-center">
+                        <div class="text-[11px] text-slate-400">வட்டப் பங்கு (Turn)</div>
+                        <div id="turnDisplay" class="text-sm sm:text-base font-bold text-purple-300 font-mono mt-1">25.0%</div>
+                        <div id="fractionDisplay" class="text-[11px] text-slate-400 font-mono">1/4 வட்டம்</div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-3 text-center">
+                        <div class="text-[11px] text-slate-400">நிரப்பு / மிகைநிரப்பு</div>
+                        <div id="compSuppLabel" class="text-[10px] text-slate-400 mt-0.5">Supplement (180°)</div>
+                        <div id="compSuppDisplay" class="text-sm sm:text-base font-bold text-amber-300 font-mono">90°</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual Input & Slider Card -->
+            <div class="glass-panel rounded-3xl p-5 sm:p-6">
+                <div class="flex items-center justify-between mb-3">
+                    <label for="angleSlider" class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                        </svg>
+                        கைமுறையாக பாகையை மாற்ற (Manual Control)
+                    </label>
+                </div>
+
+                <!-- Slider + Direct Number Box -->
+                <div class="flex items-center gap-4 mb-5">
+                    <input type="range" id="angleSlider" min="0" max="360" step="1" value="90" class="w-full">
+                    <div class="relative flex items-center">
+                        <input type="number" id="angleNumberInput" min="0" max="360" step="0.1" value="90" 
+                            class="w-24 bg-slate-900/90 border border-slate-600 focus:border-cyan-400 rounded-xl px-3 py-2 text-right font-mono font-bold text-white text-base outline-none pr-7">
+                        <span class="absolute right-2.5 text-slate-400 font-bold pointer-events-none">°</span>
+                    </div>
+                </div>
+
+                <!-- Quick Preset Angle Buttons -->
+                <div>
+                    <div class="text-xs text-slate-400 mb-2.5 font-medium">விரைவு பாகைகள் (Quick Presets):</div>
+                    <div class="grid grid-cols-4 sm:grid-cols-7 gap-2">
+                        <button data-preset="30" class="preset-btn glass-card py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold text-slate-200 hover:text-cyan-300 hover:border-cyan-500/40 active:scale-95">30°</button>
+                        <button data-preset="45" class="preset-btn glass-card py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold text-slate-200 hover:text-cyan-300 hover:border-cyan-500/40 active:scale-95">45°</button>
+                        <button data-preset="60" class="preset-btn glass-card py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold text-slate-200 hover:text-cyan-300 hover:border-cyan-500/40 active:scale-95">60°</button>
+                        <button data-preset="90" class="preset-btn glass-card py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold text-cyan-300 border-cyan-500/40 active:scale-95">90°</button>
+                        <button data-preset="120" class="preset-btn glass-card py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold text-slate-200 hover:text-cyan-300 hover:border-cyan-500/40 active:scale-95">120°</button>
+                        <button data-preset="180" class="preset-btn glass-card py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold text-slate-200 hover:text-cyan-300 hover:border-cyan-500/40 active:scale-95">180°</button>
+                        <button data-preset="270" class="preset-btn glass-card py-2 rounded-xl text-xs sm:text-sm font-mono font-semibold text-slate-200 hover:text-cyan-300 hover:border-cyan-500/40 active:scale-95 col-span-4 sm:col-span-1">270°</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Note -->
+    <footer class="relative z-10 max-w-7xl w-full mx-auto mt-6 text-center text-xs text-slate-500">
+        MATHS EXHIBITION 2026 - POOVARASANKULAM M.V &bull; சிவப்பு (A) மற்றும் நீல (B) கோடுகளின் முனைகளை தொட்டு இழுத்து (Touch / Mouse Drag) 360° கோணங்களை அளவிடலாம்.
+    </footer>
+
+    <script>
+        /* =========================================================================
+           1. BACKGROUND FLOATING STAR PARTICLES
+           ========================================================================= */
+        const bgCanvas = document.getElementById('bgParticles');
+        const bgCtx = bgCanvas.getContext('2d');
+        let particles = [];
+
+        function resizeBgCanvas() {
+            bgCanvas.width = window.innerWidth;
+            bgCanvas.height = window.innerHeight;
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(60, Math.floor((window.innerWidth * window.innerHeight) / 18000));
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * bgCanvas.width,
+                    y: Math.random() * bgCanvas.height,
+                    radius: Math.random() * 1.8 + 0.5,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    alpha: Math.random() * 0.6 + 0.2
+                });
+            }
+        }
+
+        function animateParticles() {
+            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+            for (let p of particles) {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0) p.x = bgCanvas.width;
+                if (p.x > bgCanvas.width) p.x = 0;
+                if (p.y < 0) p.y = bgCanvas.height;
+                if (p.y > bgCanvas.height) p.y = 0;
+
+                bgCtx.beginPath();
+                bgCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                bgCtx.fillStyle = `rgba(148, 163, 184, ${p.alpha})`;
+                bgCtx.fill();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        /* =========================================================================
+           2. PROTRACTOR STATE & CONFIGURATION
+           ========================================================================= */
+        const canvas = document.getElementById('protractorCanvas');
+        const ctx = canvas.getContext('2d');
+        const wrapper = document.getElementById('canvasWrapper');
+
+        // Angles in standard mathematical degrees [0, 360) where 0° is East (Right) and increases Counter-Clockwise (CCW)
+        let arm1Deg = 0;   // Red/Rose Reference Arm
+        let arm2Deg = 90;  // Cyan Movable Arm
+        let snapToInteger = true;
+        let measureMode = 'shortest'; // 'shortest' | 'ccw' | 'reflex'
+        let draggingArm = null;       // 1 or 2
+        let hoveredArm = null;        // 1 or 2
+
+        // UI Elements
+        const mainDegreeDisplay = document.getElementById('mainDegreeDisplay');
+        const explementaryBadge = document.getElementById('explementaryBadge');
+        const angleTypeCard = document.getElementById('angleTypeCard');
+        const angleTypeTamil = document.getElementById('angleTypeTamil');
+        const angleTypeIcon = document.getElementById('angleTypeIcon');
+        const radianDisplay = document.getElementById('radianDisplay');
+        const piDisplay = document.getElementById('piDisplay');
+        const turnDisplay = document.getElementById('turnDisplay');
+        const fractionDisplay = document.getElementById('fractionDisplay');
+        const compSuppLabel = document.getElementById('compSuppLabel');
+        const compSuppDisplay = document.getElementById('compSuppDisplay');
+        const arm1Label = document.getElementById('arm1Label');
+        const arm2Label = document.getElementById('arm2Label');
+        const angleSlider = document.getElementById('angleSlider');
+        const angleNumberInput = document.getElementById('angleNumberInput');
+        const snapToggleBtn = document.getElementById('snapToggleBtn');
+        const snapDot = document.getElementById('snapDot');
+
+        /* =========================================================================
+           3. MATHEMATICAL HELPER FUNCTIONS
+           ========================================================================= */
+        function normalizeDeg(d) {
+            return ((d % 360) + 360) % 360;
+        }
+
+        // Convert standard math angle (0° = Right, CCW) to Canvas radians (0 = Right, CW)
+        function degToCanvasRad(deg) {
+            return (-deg * Math.PI) / 180;
+        }
+
+        // Convert canvas (x, y) to standard math degrees [0, 360)
+        function xyToMathDeg(x, y, cx, cy) {
+            const rad = Math.atan2(-(y - cy), x - cx); // Invert Y so up is +90°
+            let deg = (rad * 180) / Math.PI;
+            return normalizeDeg(deg);
+        }
+
+        // Compute enclosed angle and sweep direction based on selected mode
+        function getAngleData() {
+            const ccwDiff = normalizeDeg(arm2Deg - arm1Deg); // CCW sweep from Arm 1 to Arm 2
+            const cwDiff = normalizeDeg(arm1Deg - arm2Deg);  // CW sweep from Arm 1 to Arm 2
+
+            let activeAngle = 0;
+            let sweepCCW = true; // True if sector goes CCW from Arm 1 to Arm 2
+
+            if (measureMode === 'ccw') {
+                activeAngle = ccwDiff;
+                sweepCCW = true;
+            } else if (measureMode === 'shortest') {
+                if (ccwDiff <= cwDiff) {
+                    activeAngle = ccwDiff;
+                    sweepCCW = true;
+                } else {
+                    activeAngle = cwDiff;
+                    sweepCCW = false;
+                }
+            } else if (measureMode === 'reflex') {
+                if (ccwDiff >= cwDiff) {
+                    activeAngle = ccwDiff;
+                    sweepCCW = true;
+                } else {
+                    activeAngle = cwDiff;
+                    sweepCCW = false;
+                }
+            }
+
+            return {
+                angle: activeAngle,
+                otherAngle: 360 - activeAngle,
+                sweepCCW: sweepCCW
+            };
+        }
+
+        // Classify angle in Tamil & English
+        function classifyAngle(deg) {
+            const eps = 0.05;
+            if (Math.abs(deg - 0) < eps) {
+                return {
+                    title: 'பூஜ்ஜியக் கோணம் (Zero Angle)',
+                    icon: '0°',
+                    gradient: 'from-slate-500/20 to-slate-400/10 border-slate-400/30',
+                    textClass: 'text-slate-300'
+                };
+            } else if (deg < 90 - eps) {
+                return {
+                    title: 'குறுங்கோணம் (Acute Angle)',
+                    icon: '∠',
+                    gradient: 'from-cyan-500/20 to-blue-500/10 border-cyan-400/40',
+                    textClass: 'text-cyan-300'
+                };
+            } else if (Math.abs(deg - 90) <= eps) {
+                return {
+                    title: 'செங்கோணம் (Right Angle)',
+                    icon: '∟',
+                    gradient: 'from-emerald-500/25 to-teal-500/10 border-emerald-400/40',
+                    textClass: 'text-emerald-300'
+                };
+            } else if (deg < 180 - eps) {
+                return {
+                    title: 'விரிகோணம் (Obtuse Angle)',
+                    icon: '鈍',
+                    gradient: 'from-amber-500/20 to-orange-500/10 border-amber-400/40',
+                    textClass: 'text-amber-300'
+                };
+            } else if (Math.abs(deg - 180) <= eps) {
+                return {
+                    title: 'நேர்க்கோணம் (Straight Angle)',
+                    icon: '平',
+                    gradient: 'from-purple-500/25 to-indigo-500/10 border-purple-400/40',
+                    textClass: 'text-purple-300'
+                };
+            } else if (deg < 360 - eps) {
+                return {
+                    title: 'பின்வளை கோணம் (Reflex Angle)',
+                    icon: '↺',
+                    gradient: 'from-rose-500/20 to-pink-500/10 border-rose-400/40',
+                    textClass: 'text-rose-300'
+                };
+            } else {
+                return {
+                    title: 'முழுக்கோணம் (Complete Angle)',
+                    icon: '◎',
+                    gradient: 'from-indigo-500/25 to-cyan-500/10 border-indigo-400/40',
+                    textClass: 'text-indigo-300'
+                };
+            }
+        }
+
+        /* =========================================================================
+           4. RENDERING THE INTERACTIVE PROTRACTOR CANVAS
+           ========================================================================= */
+        function resizeProtractorCanvas() {
+            const rect = wrapper.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            drawProtractor();
+        }
+
+        function drawProtractor() {
+            const width = wrapper.clientWidth;
+            const height = wrapper.clientHeight;
+            const cx = width / 2;
+            const cy = height / 2;
+            const outerRadius = Math.min(cx, cy) - 26;
+            const armRadius = outerRadius - 18;
+
+            ctx.clearRect(0, 0, width, height);
+
+            const { angle, sweepCCW } = getAngleData();
+
+            // 1. Outer Glow & Frosted Circle Base
+            ctx.save();
+            const baseGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, outerRadius);
+            baseGrad.addColorStop(0, 'rgba(15, 23, 42, 0.85)');
+            baseGrad.addColorStop(0.75, 'rgba(15, 23, 42, 0.65)');
+            baseGrad.addColorStop(1, 'rgba(30, 41, 59, 0.9)');
+            ctx.beginPath();
+            ctx.arc(cx, cy, outerRadius, 0, Math.PI * 2);
+            ctx.fillStyle = baseGrad;
+            ctx.fill();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = 'rgba(148, 163, 184, 0.25)';
+            ctx.stroke();
+            ctx.restore();
+
+            // 2. Concentric Reference Rings & Crosshair Grid
+            ctx.save();
+            ctx.strokeStyle = 'rgba(148, 163, 184, 0.08)';
+            ctx.lineWidth = 1;
+            [0.25, 0.5, 0.72].forEach(ratio => {
+                ctx.beginPath();
+                ctx.arc(cx, cy, outerRadius * ratio, 0, Math.PI * 2);
+                ctx.stroke();
+            });
+            // Horizontal & Vertical axes
+            ctx.beginPath();
+            ctx.moveTo(cx - outerRadius, cy);
+            ctx.lineTo(cx + outerRadius, cy);
+            ctx.moveTo(cx, cy - outerRadius);
+            ctx.lineTo(cx, cy + outerRadius);
+            ctx.stroke();
+            ctx.restore();
+
+            // 3. Shaded Enclosed Angle Sector
+            const startRad = degToCanvasRad(arm1Deg);
+            const endRad = degToCanvasRad(arm2Deg);
+            const anticlockwiseCanvas = sweepCCW;
+
+            if (angle > 0.01) {
+                ctx.save();
+                const sectorGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, armRadius);
+                sectorGrad.addColorStop(0, 'rgba(34, 211, 238, 0.38)');
+                sectorGrad.addColorStop(0.65, 'rgba(59, 130, 246, 0.22)');
+                sectorGrad.addColorStop(1, 'rgba(168, 85, 247, 0.08)');
+
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.arc(cx, cy, armRadius, startRad, endRad, anticlockwiseCanvas);
+                ctx.closePath();
+                ctx.fillStyle = sectorGrad;
+                ctx.fill();
+
+                // Inner Arc Band with Arrow/Measurement Line
+                const innerArcR = Math.max(38, outerRadius * 0.24);
+                ctx.beginPath();
+                // Check for exact 90° Right-Angle Square Box Symbol
+                if (Math.abs(angle - 90) < 0.3) {
+                    const boxSize = Math.max(22, outerRadius * 0.12);
+                    const rad1 = degToCanvasRad(arm1Deg);
+                    const rad2 = degToCanvasRad(arm2Deg);
+                    const p1x = cx + boxSize * Math.cos(rad1);
+                    const p1y = cy + boxSize * Math.sin(rad1);
+                    const p2x = cx + boxSize * Math.cos(rad2);
+                    const p2y = cy + boxSize * Math.sin(rad2);
+                    const cornerX = p1x + boxSize * Math.cos(rad2);
+                    const cornerY = p1y + boxSize * Math.sin(rad2);
+
+                    ctx.moveTo(p1x, p1y);
+                    ctx.lineTo(cornerX, cornerY);
+                    ctx.lineTo(p2x, p2y);
+                    ctx.strokeStyle = '#34d399';
+                    ctx.lineWidth = 2.5;
+                    ctx.stroke();
+                } else {
+                    ctx.arc(cx, cy, innerArcR, startRad, endRad, anticlockwiseCanvas);
+                    ctx.strokeStyle = '#38bdf8';
+                    ctx.lineWidth = 2.5;
+                    ctx.stroke();
+                }
+                ctx.restore();
+            }
+
+            // 4. Protractor Degree Tick Marks (every 1°, 5°, 10°, 30°, 90°)
+            ctx.save();
+            const fontSize = Math.max(9, Math.round(outerRadius * 0.052));
+            ctx.font = `600 ${fontSize}px Inter, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            for (let deg = 0; deg < 360; deg += 1) {
+                const rad = degToCanvasRad(deg);
+                const cos = Math.cos(rad);
+                const sin = Math.sin(rad);
+
+                let tickLen = 4;
+                let strokeColor = 'rgba(148, 163, 184, 0.2)';
+                let lineWidth = 1;
+
+                if (deg % 90 === 0) {
+                    tickLen = 14;
+                    strokeColor = 'rgba(56, 189, 248, 0.9)';
+                    lineWidth = 2;
+                } else if (deg % 30 === 0) {
+                    tickLen = 12;
+                    strokeColor = 'rgba(226, 232, 240, 0.75)';
+                    lineWidth = 1.6;
+                } else if (deg % 10 === 0) {
+                    tickLen = 9;
+                    strokeColor = 'rgba(148, 163, 184, 0.55)';
+                    lineWidth = 1.2;
+                } else if (deg % 5 === 0) {
+                    tickLen = 6;
+                    strokeColor = 'rgba(148, 163, 184, 0.35)';
+                } else if (outerRadius < 170) {
+                    continue;
+                }
+
+                const x1 = cx + outerRadius * cos;
+                const y1 = cy + outerRadius * sin;
+                const x2 = cx + (outerRadius - tickLen) * cos;
+                const y2 = cy + (outerRadius - tickLen) * sin;
+
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.strokeStyle = strokeColor;
+                ctx.lineWidth = lineWidth;
+                ctx.stroke();
+
+                // Degree Number Labels every 10° (or 30° on tiny screens)
+                const labelStep = outerRadius < 165 ? 30 : 10;
+                if (deg % labelStep === 0) {
+                    const labelR = outerRadius - tickLen - (fontSize * 0.95);
+                    const lx = cx + labelR * cos;
+                    const ly = cy + labelR * sin;
+
+                    ctx.fillStyle = (deg % 90 === 0) ? '#38bdf8' : (deg % 30 === 0 ? '#f1f5f9' : 'rgba(148, 163, 184, 0.75)');
+                    ctx.fillText(`${deg}°`, lx, ly);
+                }
+            }
+            ctx.restore();
+
+            // 5. Floating Angle Pill Badge Inside the Sector
+            if (angle >= 8) {
+                const halfSweep = sweepCCW ? (angle / 2) : -(angle / 2);
+                const midDeg = normalizeDeg(arm1Deg + halfSweep);
+                const midRad = degToCanvasRad(midDeg);
+                const labelDist = Math.min(armRadius * 0.52, Math.max(58, outerRadius * 0.36));
+                const bx = cx + labelDist * Math.cos(midRad);
+                const by = cy + labelDist * Math.sin(midRad);
+
+                const displayStr = `${snapToInteger ? Math.round(angle) : angle.toFixed(1)}°`;
+                ctx.save();
+                ctx.font = `700 ${Math.max(12, Math.round(outerRadius * 0.068))}px Inter, monospace`;
+                const textWidth = ctx.measureText(displayStr).width;
+                const padX = 10;
+                const padY = 6;
+
+                ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+                ctx.strokeStyle = 'rgba(56, 189, 248, 0.6)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.roundRect(bx - textWidth / 2 - padX, by - 10 - padY / 2, textWidth + padX * 2, 20 + padY, 999);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(displayStr, bx, by);
+                ctx.restore();
+            }
+
+            // 6. Draw Both Radial Arms & Glowing Handles
+            drawRadialArm(cx, cy, armRadius, arm1Deg, '#f43f5e', 'A', draggingArm === 1 || hoveredArm === 1);
+            drawRadialArm(cx, cy, armRadius, arm2Deg, '#22d3ee', 'B', draggingArm === 2 || hoveredArm === 2);
+
+            // 7. Center Pivot Hub
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(cx, cy, 8, 0, Math.PI * 2);
+            ctx.fillStyle = '#0f172a';
+            ctx.fill();
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#f8fafc';
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+            ctx.fillStyle = '#38bdf8';
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function drawRadialArm(cx, cy, radius, deg, color, label, isHighlighted) {
+            const rad = degToCanvasRad(deg);
+            const endX = cx + radius * Math.cos(rad);
+            const endY = cy + radius * Math.sin(rad);
+
+            ctx.save();
+            // Arm Line with Neon Glow
+            ctx.shadowColor = color;
+            ctx.shadowBlur = isHighlighted ? 16 : 8;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(endX, endY);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = isHighlighted ? 4.5 : 3.5;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            // Outer Halo Ring around Handle
+            const handleR = isHighlighted ? 15 : 13;
+            ctx.beginPath();
+            ctx.arc(endX, endY, handleR + 5, 0, Math.PI * 2);
+            ctx.fillStyle = `${color}28`;
+            ctx.fill();
+
+            // Main Draggable Handle Circle
+            ctx.beginPath();
+            ctx.arc(endX, endY, handleR, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.lineWidth = 2.5;
+            ctx.strokeStyle = '#ffffff';
+            ctx.stroke();
+
+            // Handle Letter ('A' or 'B')
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = '#0f172a';
+            ctx.font = '800 11px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(label, endX, endY);
+            ctx.restore();
+        }
+
+        /* =========================================================================
+           5. UPDATING SIDE DISPLAY PANEL & METRICS
+           ========================================================================= */
+        function updateUI(skipInputSync = false) {
+            const { angle, otherAngle } = getAngleData();
+            const formattedDeg = snapToInteger ? Math.round(angle) : Number(angle.toFixed(1));
+            const formattedOther = snapToInteger ? Math.round(otherAngle) : Number(otherAngle.toFixed(1));
+
+            // Main Degree Readout
+            mainDegreeDisplay.textContent = `${formattedDeg}°`;
+            explementaryBadge.textContent = `வெளிக்கோணம்: ${formattedOther}°`;
+
+            // Individual Arm Positions
+            arm1Label.textContent = `${snapToInteger ? Math.round(arm1Deg) : arm1Deg.toFixed(1)}°`;
+            arm2Label.textContent = `${snapToInteger ? Math.round(arm2Deg) : arm2Deg.toFixed(1)}°`;
+
+            // Angle Type Classification
+            const typeInfo = classifyAngle(formattedDeg);
+            angleTypeTamil.textContent = typeInfo.title;
+            angleTypeIcon.textContent = typeInfo.icon;
+            angleTypeCard.className = `mt-4 p-3.5 rounded-2xl bg-gradient-to-r ${typeInfo.gradient} border flex items-center justify-between transition-all duration-300`;
+
+            // Radians & Pi Multiple
+            const radVal = (angle * Math.PI) / 180;
+            const piMult = angle / 180;
+            radianDisplay.textContent = `${radVal.toFixed(3)} rad`;
+            piDisplay.textContent = `${piMult.toFixed(2)}π`;
+
+            // Turn Percentage & Simple Fraction
+            const pct = (angle / 360) * 100;
+            turnDisplay.textContent = `${pct.toFixed(1)}%`;
+            fractionDisplay.textContent = getSimpleCircleFraction(Math.round(angle));
+
+            // Complementary (90°) / Supplementary (180°)
+            if (formattedDeg <= 90) {
+                compSuppLabel.textContent = 'நிரப்பு (Comp 90°)';
+                const comp = snapToInteger ? Math.round(90 - formattedDeg) : (90 - formattedDeg).toFixed(1);
+                compSuppDisplay.textContent = `${comp}°`;
+            } else if (formattedDeg <= 180) {
+                compSuppLabel.textContent = 'மிகைநிரப்பு (Supp 180°)';
+                const supp = snapToInteger ? Math.round(180 - formattedDeg) : (180 - formattedDeg).toFixed(1);
+                compSuppDisplay.textContent = `${supp}°`;
+            } else {
+                compSuppLabel.textContent = 'முழுமை (Explem 360°)';
+                compSuppDisplay.textContent = `${formattedOther}°`;
+            }
+
+            // Sync Slider & Number Input
+            if (!skipInputSync) {
+                angleSlider.value = formattedDeg;
+                angleNumberInput.value = formattedDeg;
+            }
+
+            // Highlight matching preset button if any
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                const presetVal = parseFloat(btn.getAttribute('data-preset'));
+                if (Math.abs(formattedDeg - presetVal) < 0.2) {
+                    btn.classList.add('text-cyan-300', 'border-cyan-400', 'bg-cyan-500/20');
+                } else {
+                    btn.classList.remove('text-cyan-300', 'border-cyan-400', 'bg-cyan-500/20');
+                }
+            });
+        }
+
+        function getSimpleCircleFraction(deg) {
+            if (deg === 0) return '0 வட்டம்';
+            if (deg === 360) return 'முழு வட்டம்';
+            const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+            const divisor = gcd(deg, 360);
+            const num = deg / divisor;
+            const den = 360 / divisor;
+            if (den <= 12) return `${num}/${den} வட்டம்`;
+            return `${deg}/360`;
+        }
+
+        /* =========================================================================
+           6. MOUSE & TOUCH INTERACTION HANDLERS
+           ========================================================================= */
+        function getCanvasPointerPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function findClosestArm(x, y) {
+            const width = wrapper.clientWidth;
+            const height = wrapper.clientHeight;
+            const cx = width / 2;
+            const cy = height / 2;
+            const outerRadius = Math.min(cx, cy) - 26;
+            const armRadius = outerRadius - 18;
+
+            const rad1 = degToCanvasRad(arm1Deg);
+            const h1x = cx + armRadius * Math.cos(rad1);
+            const h1y = cy + armRadius * Math.sin(rad1);
+
+            const rad2 = degToCanvasRad(arm2Deg);
+            const h2x = cx + armRadius * Math.cos(rad2);
+            const h2y = cy + armRadius * Math.sin(rad2);
+
+            const d1 = Math.hypot(x - h1x, y - h1y);
+            const d2 = Math.hypot(x - h2x, y - h2y);
+
+            // Generous touch/click target radius (42px)
+            if (d1 < 42 || d2 < 42) {
+                return d2 <= d1 ? 2 : 1;
+            }
+            // If user clicks elsewhere on the circle ring, pick the arm angularly closest
+            const clickDeg = xyToMathDeg(x, y, cx, cy);
+            const diff1 = Math.min(normalizeDeg(clickDeg - arm1Deg), normalizeDeg(arm1Deg - clickDeg));
+            const diff2 = Math.min(normalizeDeg(clickDeg - arm2Deg), normalizeDeg(arm2Deg - clickDeg));
+            return diff2 <= diff1 ? 2 : 1;
+        }
+
+        function handlePointerDown(e) {
+            if (e.cancelable) e.preventDefault();
+            const pos = getCanvasPointerPos(e);
+            draggingArm = findClosestArm(pos.x, pos.y);
+            updateArmFromPointer(pos.x, pos.y);
+        }
+
+        function handlePointerMove(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
+
+            if (!draggingArm) {
+                // Hover feedback for desktop mouse
+                if (!e.touches) {
+                    const width = wrapper.clientWidth;
+                    const height = wrapper.clientHeight;
+                    const cx = width / 2;
+                    const cy = height / 2;
+                    const armRadius = Math.min(cx, cy) - 44;
+
+                    const d1 = Math.hypot(x - (cx + armRadius * Math.cos(degToCanvasRad(arm1Deg))), y - (cy + armRadius * Math.sin(degToCanvasRad(arm1Deg))));
+                    const d2 = Math.hypot(x - (cx + armRadius * Math.cos(degToCanvasRad(arm2Deg))), y - (cy + armRadius * Math.sin(degToCanvasRad(arm2Deg))));
+
+                    const newHover = (d2 < 28) ? 2 : (d1 < 28 ? 1 : null);
+                    if (newHover !== hoveredArm) {
+                        hoveredArm = newHover;
+                        drawProtractor();
+                    }
+                }
+                return;
+            }
+
+            if (e.cancelable) e.preventDefault();
+            updateArmFromPointer(x, y);
+        }
+
+        function updateArmFromPointer(x, y) {
+            const cx = wrapper.clientWidth / 2;
+            const cy = wrapper.clientHeight / 2;
+            let deg = xyToMathDeg(x, y, cx, cy);
+
+            if (snapToInteger) {
+                deg = Math.round(deg) % 360;
+            } else {
+                deg = Math.round(deg * 10) / 10;
+            }
+
+            if (draggingArm === 1) {
+                arm1Deg = deg;
+            } else if (draggingArm === 2) {
+                arm2Deg = deg;
+            }
+
+            drawProtractor();
+            updateUI();
+        }
+
+        function handlePointerUp() {
+            if (draggingArm) {
+                draggingArm = null;
+                drawProtractor();
+            }
+        }
+
+        // Attach Canvas Listeners
+        canvas.addEventListener('mousedown', handlePointerDown);
+        window.addEventListener('mousemove', handlePointerMove);
+        window.addEventListener('mouseup', handlePointerUp);
+
+        canvas.addEventListener('touchstart', handlePointerDown, { passive: false });
+        window.addEventListener('touchmove', handlePointerMove, { passive: false });
+        window.addEventListener('touchend', handlePointerUp);
+
+        /* =========================================================================
+           7. MANUAL CONTROLS, PRESETS & MODE SWITCHES
+           ========================================================================= */
+        function setDesiredEnclosedAngle(targetDeg, skipInputSync = false) {
+            let clamped = Math.max(0, Math.min(360, Number(targetDeg) || 0));
+            if (snapToInteger) clamped = Math.round(clamped);
+
+            // Auto-adjust mode if user manually enters >180 while in 'shortest' mode
+            if (clamped > 180 && measureMode === 'shortest') {
+                setMeasureMode('ccw', false);
+            } else if (clamped < 180 && measureMode === 'reflex') {
+                setMeasureMode('shortest', false);
+            }
+
+            arm2Deg = normalizeDeg(arm1Deg + clamped);
+            drawProtractor();
+            updateUI(skipInputSync);
+        }
+
+        angleSlider.addEventListener('input', (e) => {
+            setDesiredEnclosedAngle(e.target.value, false);
+        });
+
+        angleNumberInput.addEventListener('input', (e) => {
+            if (e.target.value === '') return;
+            setDesiredEnclosedAngle(e.target.value, true);
+            angleSlider.value = e.target.value;
+        });
+
+        // Quick Preset Buttons
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const val = parseFloat(btn.getAttribute('data-preset'));
+                setDesiredEnclosedAngle(val, false);
+            });
+        });
+
+        // Mode Toggle Buttons
+        const modeBtns = {
+            shortest: document.getElementById('modeShortest'),
+            ccw: document.getElementById('modeCCW'),
+            reflex: document.getElementById('modeReflex')
+        };
+
+        function setMeasureMode(newMode, redraw = true) {
+            measureMode = newMode;
+            Object.keys(modeBtns).forEach(k => {
+                if (k === newMode) {
+                    modeBtns[k].className = 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md';
+                } else {
+                    modeBtns[k].className = 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-400 hover:text-white';
+                }
+            });
+            if (redraw) {
+                drawProtractor();
+                updateUI();
+            }
+        }
+
+        modeBtns.shortest.addEventListener('click', () => setMeasureMode('shortest'));
+        modeBtns.ccw.addEventListener('click', () => setMeasureMode('ccw'));
+        modeBtns.reflex.addEventListener('click', () => setMeasureMode('reflex'));
+
+        // Snap 1° vs Decimal 0.1° Toggle
+        snapToggleBtn.addEventListener('click', () => {
+            snapToInteger = !snapToInteger;
+            angleSlider.step = snapToInteger ? '1' : '0.1';
+            if (snapToInteger) {
+                arm1Deg = Math.round(arm1Deg) % 360;
+                arm2Deg = Math.round(arm2Deg) % 360;
+                snapToggleBtn.classList.add('text-cyan-300', 'border-cyan-500/40', 'bg-cyan-500/10');
+                snapDot.classList.replace('bg-slate-500', 'bg-cyan-400');
+                snapToggleBtn.querySelector('span:last-child').textContent = 'முழு எண் (1° Snap)';
+            } else {
+                snapToggleBtn.classList.remove('text-cyan-300', 'border-cyan-500/40', 'bg-cyan-500/10');
+                snapDot.classList.replace('bg-cyan-400', 'bg-slate-500');
+                snapToggleBtn.querySelector('span:last-child').textContent = 'தசம எண் (0.1° Exact)';
+            }
+            drawProtractor();
+            updateUI();
+        });
+
+        // Reset Button
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            arm1Deg = 0;
+            arm2Deg = 90;
+            setMeasureMode('shortest', false);
+            drawProtractor();
+            updateUI();
+        });
+
+        /* =========================================================================
+           8. INITIALIZATION ON WINDOW LOAD
+           ========================================================================= */
+        window.onload = function () {
+            resizeBgCanvas();
+            initParticles();
+            animateParticles();
+
+            resizeProtractorCanvas();
+            updateUI();
+
+            window.addEventListener('resize', () => {
+                resizeBgCanvas();
+                resizeProtractorCanvas();
+            });
+        };
+    </script>
+</body>
+</html>
